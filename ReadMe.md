@@ -17,6 +17,7 @@
 - Install Java Extension Pack when WSL:Ubuntu is displayed at the bottom left 
 
 # Build Linux Binary
+- ./mvnw -Pnative native:compile -DskipTests
 - Create the Docker file
 - sudo apt install podman -y
 - podman build -t graalvm-sck-app:1.0 .
