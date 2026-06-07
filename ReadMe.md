@@ -24,3 +24,13 @@
 - podman login docker.io (input username and password)
 - podman tag localhost/graalvm-sck-app:1.0 docker.io/kamalcis/graalvm-sck-app:1.0
 - podman push docker.io/kamalcis/graalvm-sck-app:1.0
+
+
+# Findings
+- After Running on Kubernetes Kubeadm Cluster, GraalVM 25 + Spring Boot 4.1.0 +
+  SCK 5.0.2, I found the following error
+- Application run Failed
+  Caused by: java.lang.ClassNotFoundException: io.fabric8.kubernetes.client.impl.KubernetesClientImpl
+        at java.base@25.0.2/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:63)
+        at java.base@25.0.2/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
+        at io.fabric8.kubernetes.client.KubernetesClientBuilder.<init>(KubernetesClientBuilder.java:60)
