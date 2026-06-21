@@ -35,3 +35,17 @@
         at java.base@25.0.2/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:63)
         at java.base@25.0.2/java.lang.ClassLoader.loadClass(ClassLoader.java:490)
         at io.fabric8.kubernetes.client.KubernetesClientBuilder.<init>(KubernetesClientBuilder.java:60)
+
+
+
+
+# Reproduce
+Cloned the sck library from https://github.com/spring-cloud/spring-cloud-kubernetes
+Installed the sck library to local repo.
+cd spring-cloud-kubernetes> ./mvnw clean install -DskipTests -Dspring-boot.build-image.skip=true
+The link of app repo I used to test: https://github.com/kamalcis/graalvm-sck-app
+Build the app. cd graalvm-sck-app> ./mvnw -Pnative native:compile -DskipTests
+Now the Aot Binary is ready in the target folder. (Build outside because container does not refer local repo)
+Used Podman to build the docker image. ( Docker just copied the aot binary file into working directory)
+Deployed the image to kubernetes.
+Expect to see no error if PR is merged. Before merge ClassNotFoundException should be thrown in kubernetes

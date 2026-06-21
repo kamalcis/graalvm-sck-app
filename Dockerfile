@@ -10,6 +10,14 @@
 # ENTRYPOINT ["/app"]
 
 
+
+#---------For GraalVM Image building without using builder stage-----------------
 FROM ubuntu:22.04
 COPY target/graalvm-sck-app /app
 ENTRYPOINT ["/app"]
+
+#---------For running the application using JRE image-----------------
+#FROM docker.io/library/eclipse-temurin:25-jre
+#WORKDIR /app
+#COPY target/graalvm-sck-app-0.0.1-SNAPSHOT.jar /app/app.jar
+#ENTRYPOINT ["java", "-jar", "/app/app.jar"]
