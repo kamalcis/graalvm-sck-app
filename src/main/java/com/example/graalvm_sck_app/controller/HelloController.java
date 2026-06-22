@@ -16,6 +16,9 @@ public class HelloController {
     @Value("${api.key}")
     private String apiKey;
 
+    @Value("${MY_ENV_VAR}")
+    private String myEnvVar;
+
     @GetMapping
     public String hello() {
         return "Hello, World!\n";
@@ -34,6 +37,11 @@ public class HelloController {
     @GetMapping("/api-key")
     public String getApiKey() {
         return "API Key: " + apiKey + "\n";
+    }
+
+    @GetMapping("/env")
+    public String getEnvVar() {
+        return "Environment Variable:" + myEnvVar + "\n";
     }
 
 }
