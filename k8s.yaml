@@ -49,6 +49,8 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dlogging.level.org.springframework.cloud.kubernetes=TRACE -Dlogging.level.io.fabric8=TRACE
+        - name: MY_ENV_VAR
+          value: http://serviceurl/myenv
         image: docker.io/kamalcis/gvm:1.3
         imagePullPolicy: IfNotPresent
         name: graalvm-sck-app
